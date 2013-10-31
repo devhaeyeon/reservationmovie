@@ -2,6 +2,7 @@
 var connect = require('connect');
 var socketio = require('socket.io');
 var fs = require('fs');
+var port = process.env.PORT || 5000;
 // 변수를 선언합니다.
 var seats = [
     [1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1],
@@ -21,7 +22,7 @@ var seats = [
 var server = connect.createServer(connect.router(function (app) {
     // GET - /
     app.get('/', function (request, response, next) {
-        fs.readFile('HTMLPage.htm', function (error, data) {
+        fs.readFile('htmlPage.htm', function (error, data) {
             response.writeHead(200, { 'Content-Type': 'text/html' });
             response.end(data);
         });
@@ -34,7 +35,7 @@ var server = connect.createServer(connect.router(function (app) {
     });
 }));
 // 서버를 실행합니다.
-server.listen(52273, function () {
+server.listen(port, function () {
     console.log('Server Running at http://127.0.0.1:52273');
 });
 // 소켓 서버를 생성 및 실행합니다.
