@@ -50,7 +50,7 @@ io.set('log level', 2);
 io.sockets.on('connection', function (socket) {
     // reserve 이벤트
     socket.on('reserve', function (data) {
-        seats[data.y][data.x+1] = 2;
+        seats[data.y][data.x] = 2;
         io.sockets.emit('reserve', data);
     });
   // reserve_cancle이벤트
