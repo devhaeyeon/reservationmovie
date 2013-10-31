@@ -45,6 +45,9 @@
                     alert('취소되었습니다.');
                 }
             };
+		
+
+
             // Ajax를 수행합니다.
             $.getJSON('/seats', { dummy: new Date().getTime() }, function (data) {
                 // 좌석을 생성합니다.
@@ -65,7 +68,7 @@
 						else if(seat==2)
 						{
 							// 좌석이 예약되어있으면 enable 클래스와 click 리스너를 추가합니다.
-                            $output.addClass('resSeat').on('click', onClickSeat);
+                            $output.addClass('resSeat');
 						}
 						else {
                             // 좌석이 사용 불가능하면 disable 클래스를 추가합니다.
