@@ -40,6 +40,12 @@ server.listen(port, function () {
 });
 // 소켓 서버를 생성 및 실행합니다.
 var io = socketio.listen(server);
+
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+}); 
+
 io.set('log level', 2);
 io.sockets.on('connection', function (socket) {
     // reserve 이벤트
