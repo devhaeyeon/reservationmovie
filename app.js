@@ -22,7 +22,7 @@ var seats = [
 var server = connect.createServer(connect.router(function (app) {
     // GET - /
     app.get('/', function (request, response, next) {
-        fs.readFile('htmlPage.htm', function (error, data) {
+        fs.readFile('HTMLPage.htm', function (error, data) {
             response.writeHead(200, { 'Content-Type': 'text/html' });
             response.end(data);
         });
