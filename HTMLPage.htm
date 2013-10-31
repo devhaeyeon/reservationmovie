@@ -12,7 +12,8 @@
         }
         .enable { background: Gray; }
         .enable:hover { background: Black; }
-        .disable { background: Red; }
+        .resSeat{background: skyblue;}
+		.disable { background: Red; }
     </style>
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -60,7 +61,13 @@
                         if (seat == 1) {
                             // 좌석이 비어있으면 enable 클래스와 click 리스너를 추가합니다.
                             $output.addClass('enable').on('click', onClickSeat);
-                        } else {
+                        } 
+						else if(seat==2)
+						{
+							// 좌석이 예약되어있으면 enable 클래스와 click 리스너를 추가합니다.
+                            $output.addClass('resSeat').on('click', onClickSeat);
+						}
+						else {
                             // 좌석이 사용 불가능하면 disable 클래스를 추가합니다.
                             $output.addClass('disable');
                         }
