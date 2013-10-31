@@ -20,12 +20,12 @@
     <!-- 소켓 생성 -->
     <script>
         // 소켓 이벤트를 수행합니다.
-        var socket = io.connect('http://127.0.0.1:52273');
+        var socket = io.connect('http://reservationmovie.herokuapp.com/');
         // 이벤트를 연결합니다.
         socket.on('reserve', function (data) {
             var $target = $('div[data-x=' + data.x + '][data-y=' + data.y + ']');
             $target.removeClass('enable');
-            $target.addClass('disable');
+            $target.addClass('resSeat');
         });
     </script>
     <!-- 초기 좌석 생성 -->
