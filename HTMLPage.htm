@@ -27,6 +27,11 @@
             $target.removeClass('enable');
             $target.addClass('resSeat');
         });
+		 socket.on('reserve_cancle', function (data) {
+            var $target = $('div[data-x=' + data.x + '][data-y=' + data.y + ']');
+            $target.removeClass('resSeat');
+            $target.addClass('enable');
+        });
     </script>
     <!-- 초기 좌석 생성 -->
     <script>
