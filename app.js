@@ -53,4 +53,10 @@ io.sockets.on('connection', function (socket) {
         seats[data.y][data.x] = 2;
         io.sockets.emit('reserve', data);
     });
+  // reserve_cancle이벤트
+    socket.on('reserve_cancle', function (data) {
+        seats[data.y][data.x] = 0;
+        io.sockets.emit('reserve_cancle', data);
+    });
+
 });

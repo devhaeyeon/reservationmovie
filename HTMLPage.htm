@@ -31,10 +31,11 @@
     <!-- 초기 좌석 생성 -->
     <script>
         $(document).ready(function () {
-            // 변수를 선언합니다.
+            // 예약 이벤트
             var onClickSeat = function () {
                 var x = $(this).attr('data-x');
                 var y = $(this).attr('data-y');
+
                 if (confirm('좌석을 예약하시겠습니까?')) {
                     $(this).off('click');
                     socket.emit('reserve', {
@@ -45,7 +46,21 @@
                     alert('취소되었습니다.');
                 }
             };
-		
+		//예약 취소 이벤트
+            var onClickSeatCancle = function () {
+                var x = $(this).attr('data-x');
+                var y = $(this).attr('data-y');
+
+                if (confirm('좌석을 예약 취소하시겠습니까?')) {
+                    $(this).off('click');
+                    socket.emit('reserve_cancle', {
+                        x: x,
+                        y: y
+                    });
+                } else {
+                    alert('취소되었습니다.');
+                }
+            };
 
 
             // Ajax를 수행합니다.
@@ -68,7 +83,7 @@
 						else if(seat==2)
 						{
 							// 좌석이 예약되어있으면 enable 클래스와 click 리스너를 추가합니다.
-                            $output.addClass('resSeat');
+                            $output.addClass('resSeat').on('click', onClickSeatCancle);
 						}
 						else {
                             // 좌석이 사용 불가능하면 disable 클래스를 추가합니다.
